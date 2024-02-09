@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Slider</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #090211;
+        }
+        section{
+            width: 270px;
+            height: 360px;
+            border-radius: 10px;
+            background-color: #fff;
+            display: flex; align-items: center; justify-content: space-evenly;
+            flex-direction: column;
+        }
+        #color-container{
+            width: 240px;height: 180px;background-color: rgb(0,0,0);border-radius: 5px;padding: 0px;
+        }
+        form{
+            width: 240px;height: 90px;display: flex;
+            justify-content: space-evenly;align-items: flex-start;flex-direction: column;
+        }
+        label{display: flex;}
+        span{
+            display: block;width: 50px;font-size: 1rem;
+        }
+        #red{width: 185px;accent-color: red;}
+        #green{width: 185px;accent-color: green;}
+        #blue{width: 185px;accent-color: blue;}
+        p{
+            width: 90%;background-color: #e8e5e5;padding: 0.7rem;
+            border-radius: 5px;text-align: center;
+        }
+    </style>
+    
+</head>
+<body>
+    <section>
+        <div id="color-container"></div>
+            <form>
+                <label>
+                    <span>Red</span>
+                    <input type="range" name="red" min="0" id="red" max="255" oninput="getcolor(this.input)" value="0">
+                </label>
+                <label>
+                    <span>Green</span>
+                    <input type="range" name="green" min="0" id="green" max="255" oninput="getcolor(this.input)" value="0">
+                </label>
+                <label>
+                    <span>Blue</span>
+                    <input type="range" name="blue" min="0" id="blue" max="255" oninput="getcolor(this.input)" value="0">
+                </label>
+            </form>
+            <p id="text">rgb(0,0,0)</p>
+    </section>
+    <script>
+        let text = document.getElementById("text");
+        let container = document.getElementById("color-container");
+        function getcolor(){
+            let red = document.getElementById("red").value
+            let green = document.getElementById("green").value
+            let blue = document.getElementById("blue").value
+            let xy = `rgb(${red},${green},${blue})`
+            text.innerText = xy
+            container.style.backgroundColor = xy
+        }
+    </script>
+</body>
+</html>
